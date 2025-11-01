@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI MITA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fecfef);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .heart {
+            font-size: 5em;
+            color: red;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* animasi hati jatuh */
+        .love {
+            position: fixed;
+            top: -10px;
+            color: red;
+            font-size: 24px;
+            animation: fall 5s linear forwards;
+            z-index: 1000;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>HAI MITA ANJAAY LU</h1>
+    <div class="heart">❤️</div>
+    <p>LO CANTIK</p>
+    <img src="https://via.placeholder.com/300x200?text=Ganti+dengan+foto+kalian" alt="Foto romantis">
+    <p>Lagu ku asek buat kamu</p>
+    <button onclick="playMusic()">Putar Musik</button>
+
+    <audio id="music" src="Pemuja Rahasia.mp3" preload="auto"></audio>
+
+    <script>
+        function playMusic() {
+            const audio = document.getElementById('music');
+            audio.play();
+            spawnHearts(); // efek hati muncul
+        }
+
+        function spawnHearts() {
+            for (let i = 0; i < 25; i++) { // jumlah hati yang muncul
+                const heart = document.createElement('div');
+                heart.className = 'love';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+                heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
